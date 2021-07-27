@@ -29,7 +29,7 @@ namespace DscLdbExtr
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dropPanel = new System.Windows.Forms.Panel();
             this.dropText = new System.Windows.Forms.Label();
             this.colorPanel = new System.Windows.Forms.Panel();
@@ -84,10 +84,10 @@ namespace DscLdbExtr
             this.gridView.Location = new System.Drawing.Point(10, 106);
             this.gridView.Name = "gridView";
             this.gridView.RowHeadersWidth = 25;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.gridView.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.gridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gridView.Size = new System.Drawing.Size(522, 150);
             this.gridView.TabIndex = 5;
             // 
@@ -113,7 +113,6 @@ namespace DscLdbExtr
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discord LevelDB Extractor";
-            this.TopMost = true;
             this.dropPanel.ResumeLayout(false);
             this.dropPanel.PerformLayout();
             this.colorPanel.ResumeLayout(false);

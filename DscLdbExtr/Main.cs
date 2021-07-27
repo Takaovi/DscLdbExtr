@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace DscLdbExtr
 {
@@ -13,7 +14,14 @@ namespace DscLdbExtr
             InitializeComponent();
         }
 
-        Regex regex = new Regex(@"mfa.{85}");
+        Regex regex = new Regex("mfa(.*)\"");
+
+        async void nothingFound()
+        {
+            colorPanel.BackColor = Color.Red;
+            await Task.Delay(500);
+            colorPanel.BackColor = Color.FromArgb(114, 137, 218);
+        }
 
         private void dropPanel_DragDrop(object sender, DragEventArgs e)
         {
@@ -25,7 +33,12 @@ namespace DscLdbExtr
                 Match match = regex.Match(content);
                 if (match.Success)
                 {
-                    gridView.Rows.Add(match.Value);
+                    string token = match.Value.Remove(match.Value.IndexOf('"'));
+                    gridView.Rows.Add(token);
+                } 
+                else 
+                {
+                    nothingFound();
                 }
             }
         }
