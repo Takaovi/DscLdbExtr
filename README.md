@@ -1,5 +1,5 @@
 # DscLdbExtr (Discord LevelDB Extractor)
-A tool to extract tokens from .ldb files
+A tool to extract tokens from Discord's .ldb files
 
 ## How does it work?
 
