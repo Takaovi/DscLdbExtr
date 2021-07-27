@@ -17,7 +17,14 @@ namespace DscLdbExtr
         async void nothingFound()
         {
             colorPanel.BackColor = Color.Red;
-            await Task.Delay(500);
+            await Task.Delay(100);
+            colorPanel.BackColor = Color.FromArgb(114, 137, 218);
+        }
+
+        async void alreadyExists()
+        {
+            colorPanel.BackColor = Color.LimeGreen;
+            await Task.Delay(100);
             colorPanel.BackColor = Color.FromArgb(114, 137, 218);
         }
 
@@ -37,14 +44,24 @@ namespace DscLdbExtr
                     if (match2.Success)
                     {
                         string token = match2.Value;
-                        if(token.Contains(".")) gridView.Rows.Add(token);
+                        if (token.Contains(".")) {
+                            string cleantoken = token.Replace("\"", "");
+                            bool old = false;
+
+                            for (int i = 0; i < gridView.Rows.Count; i++)
+                                for (int j = 0; j < gridView.Columns.Count; j++)
+                                    if (gridView.Rows[i].Cells[j].Value != null && cleantoken == gridView.Rows[i].Cells[j].Value.ToString()) {
+                                        old = true;
+                                        break;
+                                    }
+
+                            if (!old) gridView.Rows.Add(cleantoken);
+                            else alreadyExists();
+                        } 
                         else nothingFound();
                     }
                 } 
-                else
-                {
-                    nothingFound();
-                }
+                else nothingFound();
             }
         }
 
