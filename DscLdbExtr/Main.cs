@@ -14,8 +14,6 @@ namespace DscLdbExtr
             InitializeComponent();
         }
 
-        Regex regex = new Regex("mfa(.*)\"");
-
         async void nothingFound()
         {
             colorPanel.BackColor = Color.Red;
@@ -30,13 +28,20 @@ namespace DscLdbExtr
             foreach (string file in files)
             {
                 string content = File.ReadAllText(file);
-                Match match = regex.Match(content);
+                
+                Match match = Regex.Match(content, "(?<=oken)(.*)(?=\")", RegexOptions.RightToLeft);
                 if (match.Success)
                 {
-                    string token = match.Value.Remove(match.Value.IndexOf('"'));
-                    gridView.Rows.Add(token);
+                    content = match.Value + '"';
+                    Match match2 = Regex.Match(content, "\"(.*?)\"");
+                    if (match2.Success)
+                    {
+                        string token = match2.Value;
+                        if(token.Contains(".")) gridView.Rows.Add(token);
+                        else nothingFound();
+                    }
                 } 
-                else 
+                else
                 {
                     nothingFound();
                 }
