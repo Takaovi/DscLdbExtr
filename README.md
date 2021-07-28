@@ -10,5 +10,10 @@ Green Blink | Red Blink
 ------------ | ------------ |
 Token is already on the list | No token found |
 
+## The program doesn't work!
 
-##### I can't guarantee the program's functionality. Discord may change the .ldb file's structure at any moment, making the program nonfunctional.
+Not to worry, you can get the token manually too.
+1. Open the .ldb file in a text editor such as notepad++.
+2. Look for the last line, your token should be between the first equation marks.
+
+##### I can't guarantee the program's functionality. Discord may change the .ldb file's structure at any moment.
